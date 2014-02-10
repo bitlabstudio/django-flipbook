@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ flipbook.title }}{% endblock %}
+
+{% block main %}
+<ul>
+    {% for image in flipbook.get_folder_images %}
+        <li>
+            <img src="{{ image.url }}" alt="" />
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

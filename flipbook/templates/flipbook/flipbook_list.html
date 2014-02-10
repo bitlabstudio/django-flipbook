@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "My books" %}{% endblock %}
+
+{% block main %}
+<ul>
+    {% for book in object_list %}
+        <li>
+            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
