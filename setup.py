@@ -53,6 +53,6 @@ setup(
     include_package_data=True,
     install_requires=[
         'Django',
-        'filer>=0.9.5',
+        'django-filer>=0.9.5',
     ],
 )
