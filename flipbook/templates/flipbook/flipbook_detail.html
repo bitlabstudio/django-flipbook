@@ -4,11 +4,26 @@
 {% block title %}{{ flipbook.title }}{% endblock %}
 
 {% block main %}
-<ul>
-    {% for image in flipbook.get_folder_images %}
-        <li>
-            <img src="{{ image.url }}" alt="" />
-        </li>
-    {% endfor %}
-</ul>
+<div class="bb-custom-wrapper">
+	<div id="bb-bookblock" class="bb-bookblock">
+		{% for image in flipbook.get_folder_images %}
+			{% cycle "col1" "col2" as column silent %}
+			{% if column == "col1" %}
+				<div class="bb-item">
+			{% endif %}
+			<div class="bb-custom-side">
+				<img src="{{ image.url }}" alt="" />
+			</div>
+			{% if forloop.last or column == "col2" %}
+				</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+	<nav>
+		<a id="bb-nav-first" href="#" class="bb-custom-icon bb-custom-icon-first">First page</a>
+		<a id="bb-nav-prev" href="#" class="bb-custom-icon bb-custom-icon-arrow-left">Previous</a>
+		<a id="bb-nav-next" href="#" class="bb-custom-icon bb-custom-icon-arrow-right">Next</a>
+		<a id="bb-nav-last" href="#" class="bb-custom-icon bb-custom-icon-last">Last page</a>
+	</nav>
+</div>
 {% endblock %}

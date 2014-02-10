@@ -48,8 +48,11 @@ Don't forget to migrate your database
 Usage
 -----
 
-...
-
+There's a list and a detail view, so you can start right away. You will
+definitely want to overwrite the templates and add your favourite flipbook
+jquery plugin, so I only added simple templates and an example plugin. Get the
+plugin here: http://tympanus.net/codrops/2012/09/03/bookblock-a-content-flip-plugin/
+Thx to Tympanus so far.
 
 
 Contribute
