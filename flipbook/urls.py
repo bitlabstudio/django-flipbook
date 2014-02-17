@@ -6,9 +6,12 @@ from . import views
 
 urlpatterns = patterns(
     '',
-    url(r'^(?P<slug>[\w-]+)/$',
+    url(r'^detail/(?P<slug>[\w-]+)/$',
         views.FlipbookDetailView.as_view(),
         name='flipbook_detail'),
+    url(r'^(?P<slug>[\w-]+)/$',
+        views.FlipbookCategoryDetailView.as_view(),
+        name='flipbook_category'),
     url(r'^$',
         views.FlipbookListView.as_view(),
         name='flipbook_list'),

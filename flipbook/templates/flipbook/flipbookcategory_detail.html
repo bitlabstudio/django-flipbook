@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{ object }}{% endblock %}
+
+{% block main %}
+<ul>
+    {% for book in object.flipbooks.all %}
+        <li>
+            <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

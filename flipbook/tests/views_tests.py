@@ -4,8 +4,26 @@ from django.test import TestCase
 
 from django_libs.tests.mixins import ViewRequestFactoryTestMixin
 
-from .factories import FlipbookFactory
+from .factories import FlipbookFactory, FlipbookCategoryFactory
 from .. import views
+
+
+class FlipbookCategoryDetailViewTestCase(ViewRequestFactoryTestMixin,
+                                         TestCase):
+    """Test case for the FlipbookCategoryDetailView view."""
+    view_class = views.FlipbookCategoryDetailView
+
+    def setUp(self):
+        self.category = FlipbookCategoryFactory()
+
+    def get_view_name(self):
+        return 'flipbook_category'
+
+    def get_view_kwargs(self):
+        return {'slug': self.category.slug}
+
+    def test_view(self):
+        self.is_callable()
 
 
 class FlipbookDetailViewTestCase(ViewRequestFactoryTestMixin, TestCase):

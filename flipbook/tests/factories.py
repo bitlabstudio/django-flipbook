@@ -3,7 +3,14 @@ import factory
 
 from filer.models import Folder
 
-from ..models import Flipbook
+from ..models import Flipbook, FlipbookCategory
+
+
+class FlipbookCategoryFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = FlipbookCategory
+
+    title = factory.Sequence(lambda i: 'name {}'.format(i))
+    slug = factory.LazyAttribute(lambda a: a.title.replace(' ', '-'))
 
 
 class FolderFactory(factory.DjangoModelFactory):

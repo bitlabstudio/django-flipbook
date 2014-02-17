@@ -1,7 +1,19 @@
 """Tests for the models of the ``flipbook`` app."""
 from django.test import TestCase
 
-from .factories import FlipbookFactory
+from .factories import FlipbookFactory, FlipbookCategoryFactory
+
+
+class FlipbookCategoryTestCase(TestCase):
+    """Tests for the ``FlipbookCategory`` model."""
+    longMessage = True
+
+    def setUp(self):
+        self.category = FlipbookCategoryFactory()
+
+    def test_model(self):
+        self.assertTrue(self.category.pk, msg=(
+            'Should be able to instantiate and save the object.'))
 
 
 class FlipbookTestCase(TestCase):

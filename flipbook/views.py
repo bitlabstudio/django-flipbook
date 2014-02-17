@@ -3,7 +3,12 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import DetailView, ListView
 
-from .models import Flipbook
+from .models import Flipbook, FlipbookCategory
+
+
+class FlipbookCategoryDetailView(DetailView):
+    """View to display a Flipbook category."""
+    model = FlipbookCategory
 
 
 class FlipbookDetailView(DetailView):
