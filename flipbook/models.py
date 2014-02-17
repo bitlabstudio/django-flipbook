@@ -95,7 +95,7 @@ class Flipbook(models.Model):
         verbose_name=_('Title'),
     )
 
-    category = models.ManyToManyField(
+    category = models.ForeignKey(
         FlipbookCategory,
         verbose_name=_('Category'),
         blank=True, null=True,
