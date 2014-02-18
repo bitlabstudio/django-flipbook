@@ -64,6 +64,10 @@ Get the plugin here:
 http://tympanus.net/codrops/2012/09/03/bookblock-a-content-flip-plugin/
 Thx to Tympanus so far.
 
+Please take a look at the models.py to check the models for their fields.
+There are a lot of possibilities to improve your templates. If you need any
+other fields or functions feel free to send a pull request =)
+
 
 Contribute
 ----------

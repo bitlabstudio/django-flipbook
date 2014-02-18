@@ -1,5 +1,9 @@
 === (ongoing) ===
 
+=== 0.3.1 ===
+
+- Added image to page model.
+
 === 0.3 ===
 
 - Added flipbook html pages.

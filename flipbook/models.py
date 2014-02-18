@@ -128,6 +128,7 @@ class FlipbookPage(models.Model):
     :flipbook: Flipbook, which contains this page.
     :position: Position of the page.
     :content: Page content.
+    :image: Optional page image.
 
     """
     flipbook = models.ForeignKey(
@@ -144,6 +145,12 @@ class FlipbookPage(models.Model):
         max_length=8192,
         verbose_name=_('Content'),
         blank=True,
+    )
+
+    image = FilerImageField(
+        verbose_name=_('Image'),
+        blank=True, null=True,
+        related_name='pages',
     )
 
     class Meta:
