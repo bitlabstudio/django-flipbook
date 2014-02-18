@@ -14,4 +14,5 @@ urlpatterns += patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^flipbooks/', include('flipbook.urls')),
+    (r'^summernote/', include('django_summernote.urls')),
 )

@@ -6,13 +6,13 @@
 {% block main %}
 <div class="bb-custom-wrapper">
 	<div id="bb-bookblock" class="bb-bookblock">
-		{% for image in flipbook.get_folder_images %}
+		{% for page in flipbook.pages.all %}
 			{% cycle "col1" "col2" as column silent %}
 			{% if column == "col1" %}
 				<div class="bb-item">
 			{% endif %}
 			<div class="bb-custom-side">
-				<img src="{{ image.url }}" alt="" />
+				{{ page.content|safe }}
 			</div>
 			{% if forloop.last or column == "col2" %}
 				</div>

@@ -1,5 +1,8 @@
 """Admin registration for the ``flipbook`` app."""
 from django.contrib import admin
+from django.db.models import TextField
+
+from django_summernote.widgets import SummernoteWidget
 
 import models
 
@@ -9,9 +12,18 @@ class FlipbookCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title', )}
 
 
+class FlipbookPageInline(admin.StackedInline):
+    model = models.FlipbookPage
+    extra = 1
+    formfield_overrides = {TextField: {'widget': SummernoteWidget}}
+
+
 class FlipbookAdmin(admin.ModelAdmin):
     list_display = ('user', 'title', 'slug', 'is_published')
     prepopulated_fields = {'slug': ('title', )}
+    inlines = [
+        FlipbookPageInline,
+    ]
 
 
 admin.site.register(models.FlipbookCategory, FlipbookCategoryAdmin)

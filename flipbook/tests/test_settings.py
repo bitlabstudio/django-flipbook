@@ -54,6 +54,7 @@ EXTERNAL_APPS = [
     'filer',
     'mptt',
     'easy_thumbnails',
+    'django_summernote',
 ]
 
 INTERNAL_APPS = [

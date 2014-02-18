@@ -54,5 +54,6 @@ setup(
     install_requires=[
         'Django',
         'django-filer>=0.9.5',
+        'django-summernote>=0.5.3',
     ],
 )

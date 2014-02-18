@@ -1,7 +1,7 @@
 """Tests for the models of the ``flipbook`` app."""
 from django.test import TestCase
 
-from .factories import FlipbookFactory, FlipbookCategoryFactory
+from . import factories
 
 
 class FlipbookCategoryTestCase(TestCase):
@@ -9,7 +9,7 @@ class FlipbookCategoryTestCase(TestCase):
     longMessage = True
 
     def setUp(self):
-        self.category = FlipbookCategoryFactory()
+        self.category = factories.FlipbookCategoryFactory()
 
     def test_model(self):
         self.assertTrue(self.category.pk, msg=(
@@ -21,12 +21,20 @@ class FlipbookTestCase(TestCase):
     longMessage = True
 
     def setUp(self):
-        self.flipbook = FlipbookFactory()
+        self.flipbook = factories.FlipbookFactory()
 
     def test_model(self):
         self.assertTrue(self.flipbook.pk, msg=(
             'Should be able to instantiate and save the object.'))
 
-    def test_get_folder_images(self):
-        self.assertEqual(self.flipbook.get_folder_images().count(), 0, msg=(
-            'Should return an empty image list.'))
+
+class FlipbookPageTestCase(TestCase):
+    """Tests for the ``FlipbookPage`` model."""
+    longMessage = True
+
+    def setUp(self):
+        self.page = factories.FlipbookPageFactory()
+
+    def test_model(self):
+        self.assertTrue(self.page.pk, msg=(
+            'Should be able to instantiate and save the object.'))

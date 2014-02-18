@@ -4,9 +4,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from filer.fields.file import FilerFileField
-from filer.fields.folder import FilerFolderField
 from filer.fields.image import FilerImageField
-from filer.models.imagemodels import Image
 
 
 class FlipbookCategory(models.Model):
@@ -78,7 +76,6 @@ class Flipbook(models.Model):
     :title: Flipbook title.
     :slug: Title in slug format.
     :category: Optional flipbook category.
-    :folder: Linked folder of the filer app.
     :is_published: True if the book is published or not.
     :download: Flipbook file to downlod.
 
@@ -107,10 +104,6 @@ class Flipbook(models.Model):
         verbose_name=_('Slug'),
     )
 
-    folder = FilerFolderField(
-        verbose_name=_('Folder'),
-    )
-
     is_published = models.BooleanField(
         verbose_name=_('Is published'),
         default=False,
@@ -127,10 +120,34 @@ class Flipbook(models.Model):
     def get_absolute_url(self):
         return reverse('flipbook_detail', kwargs={'slug': self.slug})
 
-    def get_folder_images(self):
-        """
-        Returns a set of images, which have been placed in this folder.
 
-        """
-        qs_files = self.folder.files.instance_of(Image)
-        return qs_files.filter(is_public=True)
+class FlipbookPage(models.Model):
+    """
+    Model, which holds information about a flipbook page.
+
+    :flipbook: Flipbook, which contains this page.
+    :position: Position of the page.
+    :content: Page content.
+
+    """
+    flipbook = models.ForeignKey(
+        Flipbook,
+        verbose_name=_('Flipbook'),
+        related_name='pages',
+    )
+
+    position = models.PositiveIntegerField(
+        verbose_name=_('Position'),
+    )
+
+    content = models.TextField(
+        max_length=8192,
+        verbose_name=_('Content'),
+        blank=True,
+    )
+
+    class Meta:
+        ordering = ['position', 'flipbook', 'pk']
+
+    def __unicode__(self):
+        return u'{0}'.format(self.position)

@@ -48,10 +48,19 @@ Don't forget to migrate your database
 Usage
 -----
 
-There's a list and a detail view, so you can start right away. You can also
-gather flipbooks in categories and view filtered lists. You will definitely
-want to overwrite the templates and add your favourite flipbook jquery plugin,
-so I only added simple templates and an example plugin. Get the plugin here:
+Basically, there is a Flipbook and its (html) pages. You can edit them inline.
+
+Make sure to install django-summernote, which provides the great summernote
+WYSIWYG editor.
+Django-App: https://github.com/lqez/django-summernote
+Editor: http://hackerwins.github.io/summernote/
+
+All flipbooks are viewed in a general list view. You can also gather flipbooks
+in different categories and view them in seperated lists.
+
+You will definitely want to overwrite the templates and add your favourite
+flipbook jquery plugin, so I only added simple templates and an example plugin.
+Get the plugin here:
 http://tympanus.net/codrops/2012/09/03/bookblock-a-content-flip-plugin/
 Thx to Tympanus so far.
 
