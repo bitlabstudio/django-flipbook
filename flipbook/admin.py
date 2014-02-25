@@ -8,7 +8,7 @@ import models
 
 
 class FlipbookCategoryAdmin(admin.ModelAdmin):
-    list_display = ('user', 'title', 'slug')
+    list_display = ('title', 'slug')
     prepopulated_fields = {'slug': ('title', )}
 
 
@@ -19,7 +19,7 @@ class FlipbookPageInline(admin.StackedInline):
 
 
 class FlipbookAdmin(admin.ModelAdmin):
-    list_display = ('user', 'title', 'slug', 'is_published')
+    list_display = ('title', 'slug', 'is_published')
     prepopulated_fields = {'slug': ('title', )}
     inlines = [
         FlipbookPageInline,

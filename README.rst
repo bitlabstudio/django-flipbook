@@ -69,6 +69,19 @@ There are a lot of possibilities to improve your templates. If you need any
 other fields or functions feel free to send a pull request =)
 
 
+Settings
+--------
+
+FLIPBOOK_PAGE_TYPE
+++++++++++++++++++
+
+Default: ('default', _('default')), )
+
+Tuple to define different page types. This can be helpful, if you want to
+distinguish pages in your template or if you want to add special css classes
+etc.
+
+
 Contribute
 ----------
 

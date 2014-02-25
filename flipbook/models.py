@@ -1,4 +1,5 @@
 """Models for the flipbook app."""
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -129,6 +130,8 @@ class FlipbookPage(models.Model):
     :position: Position of the page.
     :content: Page content.
     :image: Optional page image.
+    :page_type: Optional page type (e.g. to distinguish pages in the html
+      template)
 
     """
     flipbook = models.ForeignKey(
@@ -151,6 +154,15 @@ class FlipbookPage(models.Model):
         verbose_name=_('Image'),
         blank=True, null=True,
         related_name='pages',
+    )
+
+    page_type = models.CharField(
+        max_length=256,
+        verbose_name=_('Type'),
+        choices=getattr(settings, 'FLIPBOOK_PAGE_TYPE', (
+            ('default', _('default')), )
+        ),
+        blank=True,
     )
 
     class Meta:

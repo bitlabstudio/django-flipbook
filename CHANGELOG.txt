@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+- Added page type to flipbook pages.
+
 === 0.3.1 ===
 
 - Added image to page model.
