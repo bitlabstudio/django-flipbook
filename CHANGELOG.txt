@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+=== 0.3.2 ===
+
 - Added page type to flipbook pages.
 
 === 0.3.1 ===
