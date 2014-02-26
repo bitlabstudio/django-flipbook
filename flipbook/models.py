@@ -79,6 +79,7 @@ class Flipbook(models.Model):
     :category: Optional flipbook category.
     :is_published: True if the book is published or not.
     :download: Flipbook file to downlod.
+    :book_type: Optional book type (e.g. to distinguish formats).
 
     """
     user = models.ForeignKey(
@@ -115,6 +116,15 @@ class Flipbook(models.Model):
         blank=True, null=True,
     )
 
+    book_type = models.CharField(
+        max_length=256,
+        verbose_name=_('Type'),
+        choices=getattr(settings, 'FLIPBOOK_BOOK_TYPE', (
+            ('default', _('default')), )
+        ),
+        blank=True,
+    )
+
     def __unicode__(self):
         return u'{0}'.format(self.title)
 
@@ -131,7 +141,7 @@ class FlipbookPage(models.Model):
     :content: Page content.
     :image: Optional page image.
     :page_type: Optional page type (e.g. to distinguish pages in the html
-      template)
+      template).
 
     """
     flipbook = models.ForeignKey(

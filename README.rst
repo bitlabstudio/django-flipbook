@@ -72,6 +72,14 @@ other fields or functions feel free to send a pull request =)
 Settings
 --------
 
+FLIPBOOK_BOOK_TYPE
+++++++++++++++++++
+
+Default: ('default', _('default')), )
+
+Tuple to define different book types. This can be helpful, if you want to
+distinguish different book formats etc.
+
 FLIPBOOK_PAGE_TYPE
 ++++++++++++++++++
 
