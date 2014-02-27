@@ -18,6 +18,11 @@ class FlipbookDetailView(DetailView):
     def dispatch(self, request, *args, **kwargs):
         self.kwargs = kwargs
         self.object = self.get_object()
+        if self.object.category:
+            if self.kwargs['category_slug'] != self.object.category.slug:
+                return HttpResponseRedirect(reverse('flipbook_list'))
+        elif self.kwargs['category_slug'] != 'detail':
+            return HttpResponseRedirect(reverse('flipbook_list'))
         if not self.object.is_published:
             return HttpResponseRedirect(reverse('flipbook_list'))
         return super(FlipbookDetailView, self).dispatch(

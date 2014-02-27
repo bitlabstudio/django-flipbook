@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = patterns(
     '',
-    url(r'^detail/(?P<slug>[\w-]+)/$',
+    url(r'^(?P<category_slug>[\w-]+)/(?P<slug>[\w-]+)/$',
         views.FlipbookDetailView.as_view(),
         name='flipbook_detail'),
     url(r'^(?P<slug>[\w-]+)/$',

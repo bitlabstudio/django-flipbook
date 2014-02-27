@@ -37,13 +37,20 @@ class FlipbookDetailViewTestCase(ViewRequestFactoryTestMixin, TestCase):
         return 'flipbook_detail'
 
     def get_view_kwargs(self):
-        return {'slug': self.flipbook.slug}
+        return {'slug': self.flipbook.slug, 'category_slug': 'detail'}
 
     def test_view(self):
         self.is_callable()
-        self.flipbook.is_published = False
+        self.redirects(reverse('flipbook_list'), kwargs={
+            'slug': self.flipbook.slug, 'category_slug': 'foobar'})
+        self.flipbook.category = FlipbookCategoryFactory()
         self.flipbook.save()
         self.redirects(reverse('flipbook_list'))
+        self.flipbook.is_published = False
+        self.flipbook.save()
+        self.redirects(reverse('flipbook_list'), kwargs={
+            'slug': self.flipbook.slug,
+            'category_slug': self.flipbook.category.slug})
 
 
 class FlipbookListViewTestCase(ViewRequestFactoryTestMixin, TestCase):

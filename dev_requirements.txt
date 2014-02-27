@@ -7,5 +7,5 @@ fabric
 factory-boy>=2.0.2
 mock
 Pillow>=2.1.0
-django-libs>=1.42.3
+django-libs>=1.46
 South

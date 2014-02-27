@@ -1,5 +1,9 @@
 === (ongoing) ===
 
+=== 0.3.4 ===
+
+- Improved urls.
+
 === 0.3.3 ===
 
 - Added book type to flipbooks.

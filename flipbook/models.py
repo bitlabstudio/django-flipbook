@@ -129,7 +129,12 @@ class Flipbook(models.Model):
         return u'{0}'.format(self.title)
 
     def get_absolute_url(self):
-        return reverse('flipbook_detail', kwargs={'slug': self.slug})
+        if self.category:
+            category_slug = self.category.slug
+        else:
+            category_slug = 'detail'
+        return reverse('flipbook_detail', kwargs={
+            'slug': self.slug, 'category_slug': category_slug})
 
 
 class FlipbookPage(models.Model):
