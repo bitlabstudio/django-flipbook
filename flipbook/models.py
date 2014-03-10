@@ -36,6 +36,7 @@ class FlipbookCategory(models.Model):
     slug = models.SlugField(
         max_length=100,
         verbose_name=_('Slug'),
+        unique=True,
     )
 
     small_image = FilerImageField(
@@ -79,6 +80,7 @@ class Flipbook(models.Model):
     :category: Optional flipbook category.
     :is_published: True if the book is published or not.
     :download: Flipbook file to downlod.
+    :image: Optional flipbook image.
     :book_type: Optional book type (e.g. to distinguish formats).
 
     """
@@ -104,6 +106,7 @@ class Flipbook(models.Model):
     slug = models.SlugField(
         max_length=100,
         verbose_name=_('Slug'),
+        unique=True,
     )
 
     is_published = models.BooleanField(
@@ -114,6 +117,12 @@ class Flipbook(models.Model):
     download = FilerFileField(
         verbose_name=_('Download'),
         blank=True, null=True,
+    )
+
+    image = FilerImageField(
+        verbose_name=_('Image'),
+        blank=True, null=True,
+        related_name='flipbooks',
     )
 
     book_type = models.CharField(

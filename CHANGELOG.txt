@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+- Made slugs unique and added image field to flipbook model.
+
 === 0.3.4 ===
 
 - Improved urls.
