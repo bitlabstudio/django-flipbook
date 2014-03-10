@@ -82,6 +82,8 @@ class Flipbook(models.Model):
     :download: Flipbook file to downlod.
     :image: Optional flipbook image.
     :book_type: Optional book type (e.g. to distinguish formats).
+    :url: Optional external url.
+    :email: Optional email address.
 
     """
     user = models.ForeignKey(
@@ -131,6 +133,18 @@ class Flipbook(models.Model):
         choices=getattr(settings, 'FLIPBOOK_BOOK_TYPE', (
             ('default', _('default')), )
         ),
+        blank=True,
+    )
+
+    url = models.URLField(
+        verbose_name=_('URL'),
+        max_length=200,
+        blank=True,
+    )
+
+    email = models.EmailField(
+        verbose_name=_('eMail'),
+        max_length=200,
         blank=True,
     )
 
