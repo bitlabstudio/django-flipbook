@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+=== 0.3.7 ===
+
 - Added new setting to disable list views
 
 === 0.3.6 ===
