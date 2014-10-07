@@ -65,3 +65,6 @@ class FlipbookListViewTestCase(ViewRequestFactoryTestMixin, TestCase):
 
     def test_view(self):
         self.is_callable()
+
+        with self.settings(FLIPBOOK_DISABLE_LISTS=True):
+            self.redirects(to='/')

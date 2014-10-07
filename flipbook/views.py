@@ -1,4 +1,5 @@
 """Views for the ``flipbook`` app."""
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import DetailView, ListView
@@ -6,7 +7,14 @@ from django.views.generic import DetailView, ListView
 from .models import Flipbook, FlipbookCategory
 
 
-class FlipbookCategoryDetailView(DetailView):
+class ListViewMixin(object):
+    def dispatch(self, request, *args, **kwargs):
+        if getattr(settings, 'FLIPBOOK_DISABLE_LISTS', False):
+            return HttpResponseRedirect('/')
+        return super(ListViewMixin, self).dispatch(request, *args, **kwargs)
+
+
+class FlipbookCategoryDetailView(ListViewMixin, DetailView):
     """View to display a Flipbook category."""
     model = FlipbookCategory
 
@@ -29,7 +37,7 @@ class FlipbookDetailView(DetailView):
             request, *args, **kwargs)
 
 
-class FlipbookListView(ListView):
+class FlipbookListView(ListViewMixin, ListView):
     """View to display a list of published flipbooks."""
     def get_queryset(self):
         return Flipbook.objects.filter(is_published=True)

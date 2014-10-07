@@ -89,6 +89,13 @@ Tuple to define different page types. This can be helpful, if you want to
 distinguish pages in your template or if you want to add special css classes
 etc.
 
+FLIPBOOK_DISABLE_LISTS
+++++++++++++++++++++++
+
+Default: False
+
+Boolean to disable list views.
+
 
 Contribute
 ----------

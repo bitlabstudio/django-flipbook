@@ -1,5 +1,7 @@
 === (ongoing) ===
 
+- Added new setting to disable list views
+
 === 0.3.6 ===
 
 - Added url and email fields to flipbook.
