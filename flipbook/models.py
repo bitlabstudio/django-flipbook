@@ -119,6 +119,13 @@ class Flipbook(models.Model):
     download = FilerFileField(
         verbose_name=_('Download'),
         blank=True, null=True,
+        related_name='download_flipbooks',
+    )
+
+    video_download = FilerFileField(
+        verbose_name=_('Video Download'),
+        blank=True, null=True,
+        related_name='video_download_flipbooks',
     )
 
     image = FilerImageField(
