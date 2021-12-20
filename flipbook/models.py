@@ -175,6 +175,7 @@ class FlipbookPage(models.Model):
     :position: Position of the page.
     :content: Page content.
     :image: Optional page image.
+    :video_url: Optional video url.
     :page_type: Optional page type (e.g. to distinguish pages in the html
       template).
 
@@ -201,11 +202,59 @@ class FlipbookPage(models.Model):
         related_name='pages',
     )
 
+    video_url = models.URLField(
+        verbose_name=_('Video URL'),
+        blank=True,
+    )
+
     page_type = models.CharField(
         max_length=256,
         verbose_name=_('Type'),
         choices=getattr(settings, 'FLIPBOOK_PAGE_TYPE', (
             ('default', _('default')), )
+        ),
+        blank=True,
+    )
+
+    class Meta:
+        ordering = ['position', 'flipbook', 'pk']
+
+    def __unicode__(self):
+        return u'{0}'.format(self.position)
+
+
+class FlipbookDownload(models.Model):
+    """
+    Model, which holds information about a flipbook download file.
+
+    :flipbook: Flipbook, which contains this download.
+    :position: Position of the download.
+    :file_type: File type.
+    :file: File.
+
+    """
+    flipbook = models.ForeignKey(
+        Flipbook,
+        verbose_name=_('Flipbook'),
+        related_name='downloads',
+    )
+
+    position = models.PositiveIntegerField(
+        verbose_name=_('Position'),
+    )
+
+    file = FilerFileField(
+        verbose_name=_('File'),
+        blank=True, null=True,
+        related_name='flipbook_downloads',
+    )
+
+    file_type = models.CharField(
+        max_length=12,
+        verbose_name=_('File type'),
+        choices=(
+            ('pdf', _('PDF')),
+            ('video', _('Video')),
         ),
         blank=True,
     )

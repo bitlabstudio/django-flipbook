@@ -9,6 +9,8 @@ Unfortunately there seems to be an issue with either South or syncdb so that
 defining two routers ("default" and "south") does not work.
 
 """
+from south.modelsinspector import add_introspection_rules
+
 from .test_settings import *  # NOQA
 
 
@@ -20,3 +22,10 @@ DATABASES = {
 }
 
 INSTALLED_APPS.append('south', )
+
+
+add_introspection_rules([], ["^filer\.fields\.multistorage_file\.MultiStorageFileField"])
+
+SOUTH_MIGRATION_MODULES = {
+    'easy_thumbnails': 'easy_thumbnails.south_migrations',
+}

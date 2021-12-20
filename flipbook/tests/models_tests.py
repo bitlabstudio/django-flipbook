@@ -38,3 +38,15 @@ class FlipbookPageTestCase(TestCase):
     def test_model(self):
         self.assertTrue(self.page.pk, msg=(
             'Should be able to instantiate and save the object.'))
+
+
+class FlipbookDownloadTestCase(TestCase):
+    """Tests for the ``FlipbookDownload`` model."""
+    longMessage = True
+
+    def setUp(self):
+        self.download = factories.FlipbookDownloadFactory()
+
+    def test_model(self):
+        self.assertTrue(self.download.pk, msg=(
+            'Should be able to instantiate and save the object.'))

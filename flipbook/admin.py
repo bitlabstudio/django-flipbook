@@ -18,11 +18,17 @@ class FlipbookPageInline(admin.StackedInline):
     formfield_overrides = {TextField: {'widget': SummernoteWidget}}
 
 
+class FlipbookDownloadInline(admin.StackedInline):
+    model = models.FlipbookDownload
+    extra = 2
+
+
 class FlipbookAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'is_published')
     prepopulated_fields = {'slug': ('title', )}
     inlines = [
         FlipbookPageInline,
+        FlipbookDownloadInline,
     ]
 
 

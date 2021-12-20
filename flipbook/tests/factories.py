@@ -1,7 +1,7 @@
 """Factories for the ``flipbook`` app."""
 import factory
 
-from ..models import Flipbook, FlipbookCategory, FlipbookPage
+from ..models import Flipbook, FlipbookCategory, FlipbookPage, FlipbookDownload
 
 
 class FlipbookCategoryFactory(factory.DjangoModelFactory):
@@ -21,6 +21,13 @@ class FlipbookFactory(factory.DjangoModelFactory):
 
 class FlipbookPageFactory(factory.DjangoModelFactory):
     FACTORY_FOR = FlipbookPage
+
+    flipbook = factory.SubFactory(FlipbookFactory)
+    position = factory.Sequence(lambda i: i)
+
+
+class FlipbookDownloadFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = FlipbookDownload
 
     flipbook = factory.SubFactory(FlipbookFactory)
     position = factory.Sequence(lambda i: i)
