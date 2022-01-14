@@ -1,4 +1,5 @@
-django-nose
+django-nose==1.4.7
+django-polymorphic==2.1.2
 coverage
 django-coverage
 ipdb
@@ -8,4 +9,3 @@ factory-boy>=2.0.2
 mock
 Pillow>=2.1.0
 django-libs>=1.46
-South

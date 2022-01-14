@@ -1,11 +1,10 @@
 """URLs for the ``flipbook`` app."""
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from . import views
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^(?P<category_slug>[\w-]+)/(?P<slug>[\w-]+)/$',
         views.FlipbookDetailView.as_view(),
         name='flipbook_detail'),
@@ -15,4 +14,4 @@ urlpatterns = patterns(
     url(r'^$',
         views.FlipbookListView.as_view(),
         name='flipbook_list'),
-)
+]
