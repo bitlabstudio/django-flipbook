@@ -4,7 +4,7 @@ from django.db.models import TextField
 
 from django_summernote.widgets import SummernoteWidget
 
-import models
+from . import models
 
 
 class FlipbookCategoryAdmin(admin.ModelAdmin):

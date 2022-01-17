@@ -5,3 +5,4 @@ db.sqlite
 dist/
 docs/_build/
 media/
+.idea/
