@@ -11,7 +11,7 @@ urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += staticfiles_urlpatterns()
 
 urlpatterns += [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^flipbooks/', include('flipbook.urls')),
     url(r'^summernote/', include('django_summernote.urls')),
 ]

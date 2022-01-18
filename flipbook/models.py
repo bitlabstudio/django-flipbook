@@ -1,6 +1,6 @@
 """Models for the flipbook app."""
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -26,6 +26,7 @@ class FlipbookCategory(models.Model):
         verbose_name=_('User'),
         related_name='flipbook_categories',
         blank=True, null=True,
+        on_delete=models.CASCADE,
     )
 
     title = models.CharField(
@@ -43,12 +44,14 @@ class FlipbookCategory(models.Model):
         verbose_name=_('Small image'),
         blank=True, null=True,
         related_name='flipbook_categories_with_small_images',
+        on_delete=models.CASCADE,
     )
 
     large_image = FilerImageField(
         verbose_name=_('Large image'),
         blank=True, null=True,
         related_name='flipbook_categories_with_large_images',
+        on_delete=models.CASCADE,
     )
 
     url = models.URLField(
@@ -91,6 +94,7 @@ class Flipbook(models.Model):
         verbose_name=_('User'),
         related_name='flipbooks',
         blank=True, null=True,
+        on_delete=models.CASCADE,
     )
 
     title = models.CharField(
@@ -103,6 +107,7 @@ class Flipbook(models.Model):
         verbose_name=_('Category'),
         blank=True, null=True,
         related_name='flipbooks',
+        on_delete=models.CASCADE,
     )
 
     slug = models.SlugField(
@@ -120,18 +125,21 @@ class Flipbook(models.Model):
         verbose_name=_('Download'),
         blank=True, null=True,
         related_name='download_flipbooks',
+        on_delete=models.CASCADE,
     )
 
     video_download = FilerFileField(
         verbose_name=_('Video Download'),
         blank=True, null=True,
         related_name='video_download_flipbooks',
+        on_delete=models.CASCADE,
     )
 
     image = FilerImageField(
         verbose_name=_('Image'),
         blank=True, null=True,
         related_name='flipbooks',
+        on_delete=models.CASCADE,
     )
 
     book_type = models.CharField(
@@ -184,6 +192,7 @@ class FlipbookPage(models.Model):
         Flipbook,
         verbose_name=_('Flipbook'),
         related_name='pages',
+        on_delete=models.CASCADE,
     )
 
     position = models.PositiveIntegerField(
@@ -200,6 +209,7 @@ class FlipbookPage(models.Model):
         verbose_name=_('Image'),
         blank=True, null=True,
         related_name='pages',
+        on_delete=models.CASCADE,
     )
 
     video_url = models.URLField(
@@ -237,6 +247,7 @@ class FlipbookDownload(models.Model):
         Flipbook,
         verbose_name=_('Flipbook'),
         related_name='downloads',
+        on_delete=models.CASCADE,
     )
 
     position = models.PositiveIntegerField(
@@ -247,6 +258,7 @@ class FlipbookDownload(models.Model):
         verbose_name=_('File'),
         blank=True, null=True,
         related_name='flipbook_downloads',
+        on_delete=models.CASCADE,
     )
 
     file_type = models.CharField(

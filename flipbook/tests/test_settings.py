@@ -29,9 +29,26 @@ STATICFILES_DIRS = (
     os.path.join(DJANGO_PROJECT_ROOT, 'static'),
 )
 
-TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), '../templates'),
-)
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [os.path.join(os.path.dirname(__file__), '../templates')],
+    'OPTIONS': {
+        'debug': DEBUG,
+        'loaders': (
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ),
+        'context_processors': (
+            'django.contrib.auth.context_processors.auth',
+            'django.template.context_processors.i18n',
+            'django.template.context_processors.request',
+            'django.template.context_processors.media',
+            'django.template.context_processors.static',
+            'django.contrib.messages.context_processors.messages',
+            'amazonpresse.context_processors.project',
+        )
+    }
+}]
 
 COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(
     os.path.dirname(__file__), 'coverage')
@@ -67,7 +84,7 @@ COVERAGE_MODULE_EXCLUDES += EXTERNAL_APPS
 
 SECRET_KEY = 'foobar'
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
