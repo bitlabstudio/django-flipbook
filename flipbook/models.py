@@ -66,8 +66,8 @@ class FlipbookCategory(models.Model):
         blank=True,
     )
 
-    def __unicode__(self):
-        return u'{0}'.format(self.title)
+    def __str__(self):
+        return self.title
 
     def get_absolute_url(self):
         return reverse('flipbook_category', kwargs={'slug': self.slug})
@@ -163,8 +163,8 @@ class Flipbook(models.Model):
         blank=True,
     )
 
-    def __unicode__(self):
-        return u'{0}'.format(self.title)
+    def __str__(self):
+        return self.title
 
     def get_absolute_url(self):
         if self.category:
@@ -229,8 +229,8 @@ class FlipbookPage(models.Model):
     class Meta:
         ordering = ['position', 'flipbook', 'pk']
 
-    def __unicode__(self):
-        return u'{0}'.format(self.position)
+    def __str__(self):
+        return str(self.position)
 
 
 class FlipbookDownload(models.Model):
@@ -274,5 +274,5 @@ class FlipbookDownload(models.Model):
     class Meta:
         ordering = ['position', 'flipbook', 'pk']
 
-    def __unicode__(self):
-        return u'{0}'.format(self.position)
+    def __str__(self):
+        return str(self.position)
