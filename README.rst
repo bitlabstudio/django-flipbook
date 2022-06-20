@@ -16,7 +16,7 @@ To get the latest commit from GitHub
 
 .. code-block:: bash
 
-    $ pip install -e git+git://github.com/bitmazk/django-flipbook.git#egg=flipbook
+    $ pip install git+https://github.com/bitmazk/django-flipbook.git
 
 TODO: Describe further installation steps (edit / remove the examples below):
 
@@ -26,6 +26,10 @@ Add ``flipbook`` to your ``INSTALLED_APPS``
 
     INSTALLED_APPS = (
         ...,
+        'filer',
+        'mptt',
+        'easy_thumbnails',
+        'django_summernote',
         'flipbook',
     )
 
@@ -35,14 +39,16 @@ Add the ``flipbook`` URLs to your ``urls.py``
 
     urlpatterns = patterns('',
         ...
-        url(r'^flipbook/', include('flipbook.urls')),
+        re_path(r'^admin/', admin.site.urls),
+        re_path(r'^summernote/', include('django_summernote.urls')),
+        re_path(r'^flipbook/', include('flipbook.urls')),
     )
 
 Don't forget to migrate your database
 
 .. code-block:: bash
 
-    ./manage.py migrate flipbook
+    python manage.py migrate flipbook
 
 
 Usage
@@ -106,7 +112,7 @@ If you want to contribute to this project, please perform the following steps
 
     # Fork this repository
     # Clone your fork
-    $ mkvirtualenv -p python2.7 django-flipbook
+    $ mkvirtualenv -p python3.9 django-flipbook
     $ python setup.py install
     $ pip install -r dev_requirements.txt
 
