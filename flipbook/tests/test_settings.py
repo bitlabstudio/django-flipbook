@@ -8,7 +8,6 @@ SITE_ID = 1
 DJANGO_PROJECT_ROOT = os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..'))
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -92,3 +91,5 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
