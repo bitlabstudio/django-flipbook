@@ -128,6 +128,11 @@ class Flipbook(models.Model):
         on_delete=models.CASCADE,
     )
 
+    download_link = models.URLField(
+        verbose_name=_('Download Link'),
+        blank=True,
+    )
+
     video_download = FilerFileField(
         verbose_name=_('Video Download'),
         blank=True, null=True,
