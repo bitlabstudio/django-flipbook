@@ -266,6 +266,11 @@ class FlipbookDownload(models.Model):
         on_delete=models.CASCADE,
     )
 
+    download_link = models.URLField(
+        verbose_name=_('Download Link'),
+        blank=True,
+    )
+
     file_type = models.CharField(
         max_length=12,
         verbose_name=_('File type'),
