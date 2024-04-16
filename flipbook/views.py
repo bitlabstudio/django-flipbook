@@ -57,7 +57,7 @@ class FlipbookDetailView(DetailView):
             # Try to get the relevant object by category
             category_slug = self.kwargs.get("category_slug")
             if category_slug:
-                obj = queryset.filter(category__slug=category_slug)
+                obj = queryset.filter(category__slug=category_slug).first()
         if not obj:
             raise Http404(
                 _("No %(verbose_name)s found matching the query") % {"verbose_name": queryset.model._meta.verbose_name}
