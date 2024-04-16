@@ -122,7 +122,6 @@ class Flipbook(models.Model):
     slug = models.SlugField(
         max_length=100,
         verbose_name=_("Slug"),
-        unique=True,
     )
 
     is_published = models.BooleanField(
